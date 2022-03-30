@@ -19,11 +19,11 @@ This is a fun kata that has the programmer building simple combat rules, as for 
     - Level, starting at 1
     - May be Alive or Dead, starting Alive (Alive may be a true/false)
 
-1. Characters can Deal X Damage to Characters.
+1. Characters can Damage to Characters.
     - Damage is subtracted from Health
     - When damage received exceeds current Health, Health becomes 0 and the character dies
 
-1. A Character can Heal X to a Character.
+1. A Character Heal a Character.
     - Dead characters cannot be healed
     - Healing cannot raise health above 1000
 
