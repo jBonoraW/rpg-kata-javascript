@@ -30,6 +30,16 @@ it('should a character cannot damage itself', () => {
     expect(character.health).toBe(1000)
 })
 
+it('should a character only heal itself', () => {
+    const characterOne = createCharacter()
+    const characterTwo = createCharacter()
+
+    characterOne.attack(characterTwo, 50)
+    characterOne.heal(characterTwo, 50)
+
+    expect(characterTwo.health).toBe(950)
+})
+
 it('should check if character can kill other character', () => {
     const characterOne = createCharacter()
     const characterTwo = createCharacter()
