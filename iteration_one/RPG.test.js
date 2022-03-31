@@ -50,8 +50,9 @@ describe('character status', () => {
         const characterOne = createCharacter()
         const characterTwo = createCharacter()
 
-        characterOne.attack(characterTwo, 1000)
+        characterOne.attack(characterTwo, 1001)
 
         expect(isAlive(characterTwo)).toBeFalsy()
+        expect(characterTwo['health']).toBe(0)
     })
 })
