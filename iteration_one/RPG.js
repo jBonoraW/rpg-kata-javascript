@@ -11,7 +11,7 @@ function createCharacter() {
     health: MAX_HEALTH,
     level: STARTING_LEVEL,
     attack: (...args) => attack(...args, characterId),
-    heal: heal
+    heal: (...args) => heal(...args, characterId),
   }
 }
 
@@ -24,7 +24,8 @@ function attack(target, damage, id) {
   target.health = Math.max(target.health - damage, MIN_HEALTH)
 }
 
-function heal(target, healPower) {
+function heal(target, healPower, id) {
+  if (id !== target.id) return
   target.health = Math.min(target.health + healPower, MAX_HEALTH)
 }
 

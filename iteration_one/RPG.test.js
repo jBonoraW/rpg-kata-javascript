@@ -33,11 +33,14 @@ it('should a character cannot damage itself', () => {
 it('should a character only heal itself', () => {
     const characterOne = createCharacter()
     const characterTwo = createCharacter()
+    characterOne.health = 950
+    characterTwo.health = 950
 
-    characterOne.attack(characterTwo, 50)
     characterOne.heal(characterTwo, 50)
+    characterOne.heal(characterOne, 50)
 
     expect(characterTwo.health).toBe(950)
+    expect(characterOne.health).toBe(1000)
 })
 
 it('should check if character can kill other character', () => {
@@ -50,22 +53,11 @@ it('should check if character can kill other character', () => {
     expect(characterTwo.health).toBe(0)
 })
 
-it('should one character heal another one', () => {
-    const characterOne = createCharacter()
-    const characterTwo = createCharacter()
-    characterTwo.health = 500
-
-    characterOne.heal(characterTwo, 50)
-
-    expect(characterTwo.health).toBe(550)
-})
-
 it('should one character heal another one to a maximum', () => {
     const characterOne = createCharacter()
-    const characterTwo = createCharacter()
-    characterTwo.health = 500
+    characterOne.health = 500
 
-    characterOne.heal(characterTwo, 550)
+    characterOne.heal(characterOne, 550)
 
-    expect(characterTwo.health).toBe(1000)
+    expect(characterOne.health).toBe(1000)
 })
