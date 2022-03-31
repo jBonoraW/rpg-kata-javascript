@@ -1,12 +1,16 @@
 const MAX_HEALTH = 1000
 const MIN_HEALTH = 0
 const STARTING_LEVEL = 1
+let lastCharacterId = 0
 
 function createCharacter() {
+  const characterId = lastCharacterId + 1
+  lastCharacterId = characterId
   return {
+    id: lastCharacterId,
     health: MAX_HEALTH,
     level: STARTING_LEVEL,
-    attack: attack,
+    attack: (...args) => attack(...args, characterId),
     heal: heal
   }
 }
@@ -15,12 +19,13 @@ function isAlive(character) {
   return character.health === MIN_HEALTH ? false : true
 }
 
-function attack(character, damage) {
-  character.health = Math.max(character.health - damage, MIN_HEALTH)
+function attack(target, damage, id) {
+  if (id === target.id) return
+  target.health = Math.max(target.health - damage, MIN_HEALTH)
 }
 
-function heal(character, healPower) {
-  character.health = Math.min(character.health + healPower, MAX_HEALTH)
+function heal(target, healPower) {
+  target.health = Math.min(target.health + healPower, MAX_HEALTH)
 }
 
 module.exports = {
