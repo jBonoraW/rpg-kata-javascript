@@ -22,6 +22,14 @@ it('should one character attack another one', () => {
     expect(characterTwo.health).toBe(950)
 })
 
+it('should a character cannot damage itself', () => {
+    const character = createCharacter()
+
+    character.attack(character, 50)
+
+    expect(character.health).toBe(1000)
+})
+
 it('should check if character can kill other character', () => {
     const characterOne = createCharacter()
     const characterTwo = createCharacter()
