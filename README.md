@@ -27,6 +27,12 @@ This is a fun kata that has the programmer building simple combat rules, as for 
     - Dead characters cannot be healed
     - Healing cannot raise health above 1000
 
+## QUESTIONS
+# First iteration
+- Magic number 0, 1000 health and level
+- Make it easy, we don't need a class
+- Should we use those magic number variable in tests? Is it isolated?
+
 ## Iteration Two ##
 
 1. A Character cannot Deal Damage to itself.
